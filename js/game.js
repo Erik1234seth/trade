@@ -2,7 +2,9 @@
    game.js — Core game state, loop, init
    ═══════════════════════════════════════ */
 
+// ↓↓↓ ÄNDRA HÄR — uppdateras överallt automatiskt ↓↓↓
 var CA = 'COMING SOON';
+// ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 var GAME = {
   coins:       0,
@@ -226,6 +228,10 @@ function priceLoop() {
 // ── Init ─────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
   GAME.updateDisplay = updateDisplay;
+
+  // Populate CA everywhere from the single CA variable above
+  document.getElementById('ca-display').textContent    = CA;
+  document.getElementById('ca-center-addr').textContent = CA;
 
   initChart();
   initDog(onDogClick);
