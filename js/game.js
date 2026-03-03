@@ -3,7 +3,7 @@
    ═══════════════════════════════════════ */
 
 // ↓↓↓ ÄNDRA HÄR — uppdateras överallt automatiskt ↓↓↓
-var CA = 'COMING SOON';
+var CA = 'TESTT';
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 var GAME = {
