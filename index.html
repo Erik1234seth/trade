@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>$PIP – PIP THE BABY SQUIRREL 🐿</title>
+  <title>AIRDROP FARMER — Farm Tokens Before Snapshot</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=VT323&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -16,23 +16,23 @@
   <div id="event-banner"></div>
   <div id="danger-vignette"></div>
 
-  <!-- MOON OVERLAY -->
+  <!-- AIRDROP OVERLAY -->
   <div id="moon-overlay" class="hidden" onclick="closeMoonOverlay()">
     <div class="moon-content">
-      <div class="moon-rocket">🚀</div>
-      <div class="moon-title">WE'RE GOING TO THE MOON!</div>
-      <div class="moon-sub">MOON #<span id="moon-count">1</span></div>
-      <div class="moon-price">NEW PRICE: $<span id="moon-price-display">0.00000000</span></div>
-      <div class="moon-dismiss">[ CLICK TO CONTINUE ]</div>
+      <div class="moon-rocket">🪂</div>
+      <div class="moon-title">AIRDROP CLAIMED!</div>
+      <div class="moon-sub">DROP #<span id="moon-count">1</span></div>
+      <div class="moon-price">TOKEN PRICE: $<span id="moon-price-display">0.00000000</span></div>
+      <div class="moon-dismiss">[ CLICK TO KEEP FARMING ]</div>
     </div>
   </div>
 
   <!-- HEADER -->
   <header id="game-header">
-    <span class="header-ticker">Ticker: PIP Game</span>
+    <span class="header-ticker">🪂 AIRDROP FARMER</span>
     <div class="header-stats">
-      <span>PRICE:&nbsp;$<span id="hdr-price">0.00000100</span></span>
-      <span>MCAP:&nbsp;$<span id="hdr-mcap">420</span></span>
+      <span>PRICE:&nbsp;$<span id="hdr-price">0.00000069</span></span>
+      <span>MCAP:&nbsp;$<span id="hdr-mcap">290</span></span>
     </div>
     <div class="header-ca">
       <span class="ca-label">CA:</span>
@@ -44,174 +44,133 @@
   <!-- GAME CONTAINER -->
   <main class="game-container">
 
-    <!-- LEFT: Upgrades -->
+    <!-- LEFT: Degen Profile + Upgrades -->
     <aside class="upgrades-panel" id="upgrades-panel">
-      <div class="panel-title">UPGRADES</div>
+
+      <!-- Degen profile card -->
+      <div class="degen-profile">
+        <div class="dp-level" id="profile-level">NGMI</div>
+        <div class="dp-grid">
+          <div class="dp-stat">
+            <div class="dp-val" id="profile-tokens">0</div>
+            <div class="dp-lbl">FARMED</div>
+          </div>
+          <div class="dp-stat">
+            <div class="dp-val" id="profile-airdrops">0</div>
+            <div class="dp-lbl">DROPS 🪂</div>
+          </div>
+        </div>
+        <div class="dp-balance">
+          <span class="dp-bal-lbl">AVAILABLE:</span>
+          <span class="dp-bal-val" id="profile-balance">0</span>
+        </div>
+      </div>
+
+      <div class="panel-title">⚡ POWER-UPS</div>
+      <!-- upgrade items appended by upgrades.js -->
+
     </aside>
 
-    <!-- CENTER: Dog + Pump Meter + Stats -->
+    <!-- CENTER: Main Dodge Game -->
     <section class="center-panel">
+
+      <!-- Eligibility meter (background passive mechanic) -->
       <div class="pump-meter-wrap">
-        <div class="pump-label">PUMP METER</div>
+        <div class="pump-label">▓ ELIGIBILITY METER ▓</div>
         <div class="pump-bar-bg">
           <div id="pump-bar" class="pump-bar"></div>
         </div>
         <div class="pump-row">
-          <span id="pump-status" class="pump-status">PUMP IT!</span>
+          <span id="pump-status" class="pump-status">FARM IT! 🌾</span>
           <span id="pump-pct" class="pump-pct">0%</span>
         </div>
       </div>
 
-      <div class="dog-area">
-        <!-- Orbit ring + PIP the baby squirrel -->
-        <div class="mascot-orbit">
-          <span class="orbit-emoji">🚀</span>
-          <span class="orbit-emoji">💎</span>
-          <span class="orbit-emoji">🌕</span>
-          <span class="orbit-emoji">💰</span>
-          <span class="orbit-emoji">🔥</span>
-          <span class="orbit-emoji">⚡</span>
+      <!-- Main Dodge Game Canvas -->
+      <div class="dodge-main" id="dodge-main">
+        <canvas id="dodge-canvas"></canvas>
 
-          <div id="dog-wrap" class="dog-wrap">
-            <div id="speech-bubble" class="speech-bubble">wow</div>
-
-            <!-- PIP the baby squirrel -->
-            <svg id="dog-svg" viewBox="0 0 200 220" width="220" height="242"
-                 xmlns="http://www.w3.org/2000/svg">
-              <!-- shadow -->
-              <ellipse cx="100" cy="216" rx="58" ry="7" fill="rgba(0,0,0,0.28)"/>
-
-              <!-- FLUFFY TAIL (drawn first = always behind body + head) -->
-              <!-- Outer dark fur — proper bezier teardrop, tip clearly above head -->
-              <path d="M 140 192
-                       C 176 182 198 144 196 100
-                       C 194 56  186 20  178 16
-                       C 170 12  158 14  155 24
-                       C 152 34  156 58  160 80
-                       C 164 102 164 130 155 158
-                       C 150 172 144 184 140 192 Z"
-                    fill="#7B3A10"/>
-              <!-- Inner fur — lighter brown -->
-              <path d="M 141 184
-                       C 172 175 190 140 188 100
-                       C 186 60  178 26  170 22
-                       C 162 18  154 22  152 32
-                       C 150 42  154 64  158 84
-                       C 162 104 162 128 154 154
-                       C 150 168 143 180 141 184 Z"
-                    fill="#C87A3A"/>
-              <!-- Fluffy cream tip at top — clearly visible above the head -->
-              <ellipse cx="168" cy="18" rx="20" ry="15" fill="#E8A86A"/>
-              <ellipse cx="168" cy="18" rx="12" ry="9"  fill="#F5DEB3"/>
-
-              <!-- BODY -->
-              <ellipse cx="90" cy="177" rx="64" ry="50" fill="#A0522D"/>
-              <!-- belly cream patch -->
-              <ellipse cx="88" cy="185" rx="42" ry="34" fill="#F0D09A"/>
-
-              <!-- HEAD -->
-              <circle cx="100" cy="95" r="62" fill="#A0522D"/>
-              <!-- face lighter area -->
-              <ellipse cx="100" cy="110" rx="44" ry="39" fill="#C87840"/>
-
-              <!-- LEFT EAR -->
-              <ellipse cx="62" cy="42" rx="18" ry="24" fill="#8B3A1A"/>
-              <ellipse cx="62" cy="44" rx="11" ry="15" fill="#D07040"/>
-
-              <!-- RIGHT EAR -->
-              <ellipse cx="138" cy="42" rx="18" ry="24" fill="#8B3A1A"/>
-              <ellipse cx="138" cy="44" rx="11" ry="15" fill="#D07040"/>
-
-              <!-- EYE WHITES -->
-              <circle cx="76"  cy="85" r="16" fill="white" stroke="#2C1810" stroke-width="2"/>
-              <circle cx="124" cy="85" r="16" fill="white" stroke="#2C1810" stroke-width="2"/>
-
-              <!-- PUPILS (tracked) -->
-              <circle id="pupil-l" cx="78"  cy="87" r="9" fill="#1A0E08"/>
-              <circle id="pupil-r" cx="126" cy="87" r="9" fill="#1A0E08"/>
-
-              <!-- EYE SHINE -->
-              <circle id="shine-l" cx="73"  cy="81" r="4" fill="white"/>
-              <circle id="shine-r" cx="121" cy="81" r="4" fill="white"/>
-
-              <!-- DOLLAR EYES (click effect) -->
-              <text id="dollar-l" x="62"  y="96" font-size="21"
-                    fill="#FFE000" font-family="Bangers,cursive" visibility="hidden">$</text>
-              <text id="dollar-r" x="109" y="96" font-size="21"
-                    fill="#FFE000" font-family="Bangers,cursive" visibility="hidden">$</text>
-
-              <!-- EYELIDS (blink) -->
-              <ellipse class="eyelid-l" cx="76"  cy="85" rx="16" ry="16" fill="#A0522D"/>
-              <ellipse class="eyelid-r" cx="124" cy="85" rx="16" ry="16" fill="#A0522D"/>
-
-              <!-- NOSE (tiny cute) -->
-              <ellipse cx="100" cy="114" rx="9" ry="7" fill="#5C2A10"/>
-              <circle cx="97"  cy="113" r="2.5" fill="rgba(255,255,255,0.3)"/>
-
-              <!-- CHUBBY CHEEK POUCHES -->
-              <ellipse cx="60"  cy="101" rx="22" ry="15" fill="rgba(200,120,60,0.3)"/>
-              <ellipse cx="140" cy="101" rx="22" ry="15" fill="rgba(200,120,60,0.3)"/>
-
-              <!-- BLUSH -->
-              <ellipse cx="54"  cy="107" rx="17" ry="11" fill="rgba(255,130,90,0.45)"/>
-              <ellipse cx="146" cy="107" rx="17" ry="11" fill="rgba(255,130,90,0.45)"/>
-
-              <!-- SMILE -->
-              <path d="M 87 123 Q 100 133 113 123" fill="none"
-                    stroke="#5C2A10" stroke-width="2.5" stroke-linecap="round"/>
-
-              <!-- COIN IN PAW (cute detail) -->
-              <circle cx="68" cy="170" r="12" fill="#FFE000" stroke="#C8A000" stroke-width="2"/>
-              <text x="62" y="175" font-size="12" fill="#7A5500"
-                    font-family="Bangers,cursive">$</text>
-            </svg>
-          </div>
+        <!-- HUD (during play) -->
+        <div id="dodge-hud" class="dodge-hud hidden">
+          <span id="dodge-lives">❤️❤️❤️</span>
+          <span>TOKENS: <b id="dodge-score">0</b></span>
+          <span id="dodge-altitude">ALT: 1800m</span>
         </div>
-        <div class="mascot-name">PIP<small>THE BABY SQUIRREL 🐿</small></div>
-        <div class="click-hint">👆 CLICK TO PUMP!</div>
+
+        <!-- Start screen -->
+        <div id="dodge-start-screen" class="dodge-screen">
+          <div class="ds-title">🪂 AIRDROP DODGE</div>
+          <div class="ds-desc">
+            Dodge sybil hunters &amp; SEC agents<br>
+            Collect tokens on the way down<br>
+            Reach the safe zone to claim your airdrop!
+          </div>
+          <div class="ds-controls">WASD · ARROWS · MOUSE to move</div>
+          <button class="ds-btn" onclick="startDodgeGame()">▶ START GAME</button>
+        </div>
+
+        <!-- Game over / win screen -->
+        <div id="dodge-gameover" class="dodge-screen hidden">
+          <div id="dodge-result-icon"   class="dr-icon">💀</div>
+          <div id="dodge-result-title"  class="dr-title">SYBIL-FLAGGED!</div>
+          <div id="dodge-result-sub"    class="dr-sub">You ran out of lives!</div>
+          <div id="dodge-result-tokens" class="dr-tokens">+0 tokens added</div>
+          <button class="ds-btn" onclick="startDodgeGame()">▶ PLAY AGAIN</button>
+        </div>
       </div>
 
-      <!-- CA — center of page, impossible to miss -->
+      <!-- CA center -->
       <div class="ca-center" id="ca-center">
-        <div class="ca-center-label">📋 Ticker: PIP Game · PIP THE BABY SQUIRREL · SOLANA</div>
+        <div class="ca-center-label">📋 AIRDROP FARMER · SOLANA · GET ELIGIBLE NOW</div>
         <div class="ca-center-addr" id="ca-center-addr"></div>
         <button class="ca-center-btn" id="ca-center-btn" onclick="copyCA()">
-          🦍 APE IN — COPY CA
+          🪂 APE IN — COPY CA
         </button>
       </div>
 
+      <!-- Stats -->
       <div class="game-stats">
         <div class="stat-box">
           <div class="stat-val" id="stat-coins">0</div>
-          <div class="stat-lbl">$PIP</div>
+          <div class="stat-lbl">TOKENS</div>
         </div>
         <div class="stat-box">
-          <div class="stat-val" id="stat-click">1</div>
+          <div class="stat-val" id="stat-click">100</div>
           <div class="stat-lbl">PER CLICK</div>
         </div>
         <div class="stat-box">
           <div class="stat-val" id="stat-moons">0</div>
-          <div class="stat-lbl">MOONS 🌕</div>
+          <div class="stat-lbl">AIRDROPS 🪂</div>
         </div>
         <div class="stat-box">
           <div class="stat-val" id="stat-auto">0</div>
           <div class="stat-lbl">AUTO/SEC</div>
         </div>
       </div>
+
     </section>
 
-    <!-- RIGHT: Price Chart + News Feed -->
+    <!-- RIGHT: Live Claims + Leaderboard -->
     <aside class="right-panel">
-      <div class="panel-title">📈 PRICE CHART</div>
-      <canvas id="price-chart"></canvas>
-      <div class="price-now">$<span id="price-label">0.00000100</span></div>
-      <div class="panel-title">📰 NEWS FEED</div>
-      <div id="news-feed" class="news-feed">
-        <div class="news-item">🟢 $PIP token launched successfully</div>
-        <div class="news-item">🚀 Community growing rapidly</div>
-        <div class="news-item">💎 Diamond hands holding strong</div>
+
+      <div class="panel-title">🔴 LIVE CLAIMS</div>
+      <div class="live-total-bar">
+        <span class="live-total-label">TOTAL TOKENS CLAIMED</span>
+        <span class="live-total-val" id="live-total-val">0</span>
       </div>
+      <div id="live-feed" class="live-feed"></div>
+
+      <div class="panel-title lb-title">🏆 TOP FARMERS</div>
+      <div id="leaderboard" class="leaderboard"></div>
+
     </aside>
+
+    <!-- Hidden: keep chart.js + events.js refs alive -->
+    <div style="display:none" aria-hidden="true">
+      <canvas id="price-chart"></canvas>
+      <span id="price-label">0.00000069</span>
+      <div id="news-feed"></div>
+    </div>
 
   </main>
 
@@ -220,6 +179,8 @@
   <script src="js/dog.js"></script>
   <script src="js/upgrades.js"></script>
   <script src="js/events.js"></script>
+  <script src="js/activity.js"></script>
+  <script src="js/dodge.js"></script>
   <script src="js/game.js"></script>
 </body>
 </html>

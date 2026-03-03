@@ -3,7 +3,7 @@
    ═══════════════════════════════════════ */
 
 // ↓↓↓ ÄNDRA HÄR — uppdateras överallt automatiskt ↓↓↓
-var CA = 'J2Dg8qgbfsPMdQM1CZFkMTz9Gmi4VZGdfwWassaxpump';
+var CA = 'COMING SOON';
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 var GAME = {
@@ -39,16 +39,12 @@ function updateDisplay() {
   var barBg    = document.querySelector('.pump-bar-bg');
   var vignette = document.getElementById('danger-vignette');
   if (pct >= 80) {
-    statusEl.textContent = 'ALMOST MOON! 🌕';
+    statusEl.textContent = 'SNAPSHOT INCOMING! 📸';
     statusEl.classList.add('glow');
     barBg.classList.add('near-moon');
     vignette.classList.add('show');
   } else {
-    if (pct >= 50) {
-      statusEl.textContent = 'KEEP GOING! 🔥';
-    } else {
-      statusEl.textContent = 'PUMP IT! 💊';
-    }
+    statusEl.textContent = pct >= 50 ? 'KEEP FARMING! ⚡' : 'FARM IT! 🌾';
     statusEl.classList.remove('glow');
     barBg.classList.remove('near-moon');
     vignette.classList.remove('show');
@@ -64,6 +60,15 @@ function updateDisplay() {
   document.getElementById('hdr-mcap').textContent = formatNum(mcap);
 
   renderUpgrades(GAME);
+
+  // Degen profile (left panel)
+  var LEVEL_TITLES = ['NGMI', 'DEGEN', 'EARLY ADOPTER', 'ALPHA CHAD', 'BASED', 'AIRDROP GOD'];
+  var lvl = Math.min(LEVEL_TITLES.length - 1, GAME.moons);
+  var el;
+  el = document.getElementById('profile-level');   if (el) el.textContent = LEVEL_TITLES[lvl];
+  el = document.getElementById('profile-tokens');  if (el) el.textContent = formatNum(GAME.totalCoins);
+  el = document.getElementById('profile-airdrops');if (el) el.textContent = GAME.moons;
+  el = document.getElementById('profile-balance'); if (el) el.textContent = formatNum(Math.floor(GAME.coins));
 }
 
 function formatPrice(p) {
@@ -123,8 +128,8 @@ function triggerMoon() {
 
   launchConfetti(500);
   screenShake();
-  showToast('🌕 MOON #' + GAME.moons + '! x' + mult.toFixed(1) + ' + ' + formatNum(moonBonus) + ' BONUS!', 3500);
-  addToNewsFeed('🚀 MOON EVENT #' + GAME.moons + '! Price x' + mult.toFixed(1) + ' — +' + formatNum(moonBonus) + ' bonus coins!');
+  showToast('🪂 AIRDROP #' + GAME.moons + '! x' + mult.toFixed(1) + ' + ' + formatNum(moonBonus) + ' TOKENS!', 3500);
+  addToNewsFeed('🪂 AIRDROP #' + GAME.moons + ' CLAIMED! Price x' + mult.toFixed(1) + ' — +' + formatNum(moonBonus) + ' bonus tokens!');
 
   updateDisplay();
 }
@@ -144,11 +149,11 @@ function copyCA() {
     if (btnCenter) { btnCenter.textContent = '✅ CA COPIED — LFG!! 🚀'; btnCenter.classList.add('success'); }
     launchConfetti(400);
     screenShake();
-    showToast('🦍 APE IN! CA COPIED! 🚀🚀🚀', 3000);
+    showToast('🪂 APE IN! CA COPIED! 🚀🚀🚀', 3000);
     clearTimeout(copyTimer);
     copyTimer = setTimeout(function() {
       if (btnHead)   { btnHead.textContent = '📋 COPY';               btnHead.classList.remove('success'); }
-      if (btnCenter) { btnCenter.textContent = '🦍 APE IN — COPY CA'; btnCenter.classList.remove('success'); }
+      if (btnCenter) { btnCenter.textContent = '🪂 APE IN — COPY CA'; btnCenter.classList.remove('success'); }
     }, 2800);
   };
   if (navigator.clipboard) {
@@ -177,8 +182,8 @@ document.addEventListener('keydown', function(e) {
     GAME.pumpMeter  += 20;
     launchConfetti(600);
     screenShake();
-    showToast('🎉 WAGMI! +9999 $PIP! LFG!! 🎉', 3500);
-    addToNewsFeed('🎉 WAGMI easter egg triggered! +9999 $PIP!');
+    showToast('🎉 WAGMI! +9999 tokens! LFG!! 🎉', 3500);
+    addToNewsFeed('🎉 WAGMI easter egg triggered! +9999 tokens airdropped!');
     updateDisplay();
     updateChart(GAME.price);
   }
