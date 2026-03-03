@@ -2,7 +2,7 @@
    game.js — Core game state, loop, init
    ═══════════════════════════════════════ */
 
-var CA = '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU';
+var CA = 'donutcrypto';
 
 var GAME = {
   coins:       0,
