@@ -3,7 +3,7 @@
    ═══════════════════════════════════════ */
 
 // ↓↓↓ ÄNDRA HÄR — uppdateras överallt automatiskt ↓↓↓
-var CA = 'TEST';
+var CA = 'J2Dg8qgbfsPMdQM1CZFkMTz9Gmi4VZGdfwWassaxpump';
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 var GAME = {
